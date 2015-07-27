@@ -1,7 +1,5 @@
 # y18n
 
-**work in progress**
-
 The bare-bones internationalization library used by yargs.
 
 Inspired by [i18n](https://www.npmjs.com/package/i18n).
@@ -34,11 +32,11 @@ output:
 
 ## JSON Language Files
 
-The JSON language files should be stored in a `/locales` folder,
+The JSON language files should be stored in a `./locales` folder,
 file names correspond to locales, e.g., `en.json`, `pirate.json`.
 
-When internationalized strings are observed for the first time, they
-will be added to the JSON file corresponding to the default locale.
+When strings are observed for the first time, they will be
+added to the JSON file corresponding to the default locale.
 
 ## Methods
 
@@ -52,19 +50,23 @@ Create an instance of y18n with the config provided, options include:
 
 ### y18n.\_\_(str, arg, arg, arg)
 
-print a localized string, `%s` will be replaced with `arg`s.
+Print a localized string, `%s` will be replaced with `arg`s.
 
 ### y18n.\_\_n(singularString, pluarlString, count, arg, arg, arg)
 
-print a localized string with appropriate pluralization.
+Print a localized string with appropriate pluralization.
 
 ### y18n.setLocale(str)
 
-Update the current locale being used.
+Set the current locale being used.
 
-### y18n.setLocale(obj)
+### y18n.getLocale()
 
-Set the locale's string lookup table to the object provided.
+What locale is currently being used?
+
+### y18n.setLocale(locale, obj)
+
+Override `locale` with the string lookups provided in `obj`.
 
 ## License
 

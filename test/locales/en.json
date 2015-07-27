@@ -1,0 +1,12 @@
+{
+  "Hello": "Hello!",
+  "Hello %s %s": "Hello %s %s",
+  "%s cat": {
+    "one": "%s cat",
+    "other": "%s cats"
+  },
+  "%s %s cat": {
+    "one": "%s %s cat",
+    "other": "%s %s cats"
+  }
+}
