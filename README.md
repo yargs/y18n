@@ -23,20 +23,20 @@ _pluralization support:_
 ```js
 var __n = require('y18n').__n
 
-console.log(__('one fish', 'two fishes %s', 2, 'foo'))
+console.log(__('%s fish %s', '%s fishes %s', 2, 'foo'))
 ```
 
 output:
 
-`two fishes foo`
+`2 fishes foo`
 
 ## JSON Language Files
 
-The JSON language files should be stored in a `./locales` folder,
-file names correspond to locales, e.g., `en.json`, `pirate.json`.
+The JSON language files should be stored in a `./locales` folder.
+File names correspond to locales, e.g., `en.json`, `pirate.json`.
 
-When strings are observed for the first time, they will be
-added to the JSON file corresponding to the default locale.
+When strings are observed for the first time they will be
+added to the JSON file corresponding to the current locale.
 
 ## Methods
 
@@ -52,7 +52,7 @@ Create an instance of y18n with the config provided, options include:
 
 Print a localized string, `%s` will be replaced with `arg`s.
 
-### y18n.\_\_n(singularString, pluarlString, count, arg, arg, arg)
+### y18n.\_\_n(singularString, pluralString, count, arg, arg, arg)
 
 Print a localized string with appropriate pluralization.
 
