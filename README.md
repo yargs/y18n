@@ -56,15 +56,15 @@ Print a localized string, `%s` will be replaced with `arg`s.
 
 Print a localized string with appropriate pluralization.
 
-### y18n.setLocale(str)
+### y18n.setLocale(str) __TODO__
 
 Set the current locale being used.
 
-### y18n.getLocale()
+### y18n.getLocale() __TODO__
 
 What locale is currently being used?
 
-### y18n.setLocale(obj)
+### y18n.setLocale(obj) __TODO__
 
 Update the current locale with the string lookups provided in `obj`.
 
