@@ -64,9 +64,9 @@ Set the current locale being used.
 
 What locale is currently being used?
 
-### y18n.setLocale(locale, obj)
+### y18n.setLocale(obj)
 
-Override `locale` with the string lookups provided in `obj`.
+Update the current locale with the string lookups provided in `obj`.
 
 ## License
 
