@@ -115,6 +115,22 @@ Y18N.prototype.__n = function () {
   return util.format.apply(util, [str, quantity].concat(args))
 }
 
+Y18N.prototype.setLocale = function (locale) {
+  this.locale = locale
+}
+
+Y18N.prototype.getLocale = function () {
+  return this.locale
+}
+
+Y18N.prototype.updateLocale = function (obj) {
+  if (!this.cache[this.locale]) this._readLocaleFile()
+
+  for (var key in obj) {
+    this.cache[this.locale][key] = obj[key]
+  }
+}
+
 module.exports = function (opts) {
   var y18n = new Y18N(opts)
 

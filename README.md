@@ -1,5 +1,10 @@
 # y18n
 
+[![Build Status][travis-image]][travis-url]
+[![Coverage Status][coveralls-image]][coveralls-url]
+[![NPM version][npm-image]][npm-url]
+[![js-standard-style][standard-image]][standard-url]
+
 The bare-bones internationalization library used by yargs.
 
 Inspired by [i18n](https://www.npmjs.com/package/i18n).
@@ -56,18 +61,27 @@ Print a localized string, `%s` will be replaced with `arg`s.
 
 Print a localized string with appropriate pluralization.
 
-### y18n.setLocale(str) __TODO__
+### y18n.setLocale(str)
 
 Set the current locale being used.
 
-### y18n.getLocale() __TODO__
+### y18n.getLocale(locale)
 
 What locale is currently being used?
 
-### y18n.setLocale(obj) __TODO__
+### y18n.updateLocale(obj)
 
-Update the current locale with the string lookups provided in `obj`.
+Update the current locale with the key value pairs in `obj`.
 
 ## License
 
 ISC
+
+[travis-url]: https://travis-ci.org/bcoe/y18n
+[travis-image]: https://img.shields.io/travis/bcoe/y18n.svg
+[coveralls-url]: https://coveralls.io/github/bcoe/y18n
+[coveralls-image]: https://img.shields.io/coveralls/bcoe/y18n.svg
+[npm-url]: https://npmjs.org/package/y18n
+[npm-image]: https://img.shields.io/npm/v/y18n.svg
+[standard-image]: https://img.shields.io/badge/code%20style-standard-brightgreen.svg
+[standard-url]: https://github.com/feross/standard
