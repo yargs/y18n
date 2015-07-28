@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "pretest": "standard",
-    "test": "nyc mocha"
+    "test": "nyc mocha",
+    "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,7 @@
   "homepage": "https://github.com/bcoe/y18n",
   "devDependencies": {
     "chai": "^3.2.0",
+    "coveralls": "^2.11.3",
     "mocha": "^2.2.5",
     "nyc": "^3.0.1",
     "rimraf": "^2.4.2",

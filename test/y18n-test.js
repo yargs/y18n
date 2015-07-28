@@ -198,6 +198,60 @@ describe('y18n', function () {
     })
   })
 
+  describe('setLocale', function () {
+    it('switches the locale', function () {
+      var i18n = y18n({
+        directory: __dirname + '/locales'
+      })
+
+      i18n.__('Hello').should.equal('Hello!')
+      i18n.setLocale('pirate')
+      i18n.__('Hello').should.equal('Avast ye mateys!')
+    })
+  })
+
+  describe('updateLocale', function () {
+    beforeEach(function (done) {
+      rimraf('./test/locales/fr.json', function () {
+        return done()
+      })
+    })
+
+    it('updates the locale with the new lookups provided', function () {
+      var i18n = y18n({
+        locale: 'fr',
+        directory: __dirname + '/locales'
+      })
+
+      i18n.updateLocale({
+        foo: 'le bar'
+      })
+
+      i18n.__('foo').should.equal('le bar')
+    })
+
+    it('loads the locale from disk prior to updating the map', function () {
+      fs.writeFileSync('./test/locales/fr.json', '{"meow": "le meow"}', 'utf-8')
+
+      var i18n = y18n({
+        locale: 'fr',
+        directory: __dirname + '/locales'
+      })
+
+      i18n.updateLocale({
+        foo: 'le bar'
+      })
+
+      i18n.__('meow').should.equal('le meow')
+    })
+  })
+
+  describe('getLocale', function () {
+    it('returns the configured locale', function () {
+      y18n().getLocale().should.equal('en')
+    })
+  })
+
   after(function () {
     rimraf.sync('./test/locales/fr.json')
   })
