@@ -124,7 +124,7 @@ describe('y18n', function () {
         directory: __dirname + '/locales'
       }).__n
 
-      __n('%s cat', '%s cats', 1).should.equal('1 cat')
+      __n('%s cat', '%s cats', 1, 1).should.equal('1 cat')
     })
 
     it('uses the plural form if quantity is greater than 1', function () {
@@ -132,7 +132,7 @@ describe('y18n', function () {
         directory: __dirname + '/locales'
       }).__n
 
-      __n('%s cat', '%s cats', 2).should.equal('2 cats')
+      __n('%s cat', '%s cats', 2, 2).should.equal('2 cats')
     })
 
     it('allows additional arguments to be printed', function () {
@@ -140,7 +140,7 @@ describe('y18n', function () {
         directory: __dirname + '/locales'
       }).__n
 
-      __n('%s %s cat', '%s %s cats', 2, 'black').should.equal('2 black cats')
+      __n('%s %s cat', '%s %s cats', 2, 2, 'black').should.equal('2 black cats')
     })
 
     it('allows an alternative locale to be set', function () {
@@ -149,8 +149,8 @@ describe('y18n', function () {
         directory: __dirname + '/locales'
       }).__n
 
-      __n('%s cat', '%s cats', 1).should.equal('1 land catfish')
-      __n('%s cat', '%s cats', 3).should.equal('3 land catfishes')
+      __n('%s cat', '%s cats', 1, 1).should.equal('1 land catfish')
+      __n('%s cat', '%s cats', 3, 3).should.equal('3 land catfishes')
     })
 
     describe('the first time observing a pluralization', function () {
@@ -166,7 +166,7 @@ describe('y18n', function () {
           directory: __dirname + '/locales'
         }).__n
 
-        __n('%s le cat', '%s le cats', 1).should.equal('1 le cat')
+        __n('%s le cat', '%s le cats', 1, 1).should.equal('1 le cat')
       })
 
       it('writes to the locale file if updateFiles is true', function (done) {

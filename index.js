@@ -112,7 +112,7 @@ Y18N.prototype.__n = function () {
     cb()
   }
 
-  return util.format.apply(util, [str, quantity].concat(args))
+  return util.format.apply(util, [str].concat(args))
 }
 
 Y18N.prototype.setLocale = function (locale) {
