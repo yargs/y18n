@@ -28,7 +28,7 @@ _pluralization support:_
 ```js
 var __n = require('y18n').__n
 
-console.log(__('%s fish %s', '%s fishes %s', 2, 'foo'))
+console.log(__('%s fish %s', '%s fishes %s', 2, 2, 'foo'))
 ```
 
 output:
