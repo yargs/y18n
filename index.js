@@ -112,7 +112,12 @@ Y18N.prototype.__n = function () {
     cb()
   }
 
-  return util.format.apply(util, [str].concat(args))
+  // if a %d placeholder is provided, add quantity
+  // to the arguments expanded by util.format.
+  var values = [str]
+  if (~str.indexOf('%d')) values.push(quantity)
+
+  return util.format.apply(util, values.concat(args))
 }
 
 Y18N.prototype.setLocale = function (locale) {

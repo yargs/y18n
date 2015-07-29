@@ -28,7 +28,7 @@ _pluralization support:_
 ```js
 var __n = require('y18n').__n
 
-console.log(__('%s fish %s', '%s fishes %s', 2, 2, 'foo'))
+console.log(__('one fish %s', '%d fishes %s', 2, 'foo'))
 ```
 
 output:
@@ -59,7 +59,8 @@ Print a localized string, `%s` will be replaced with `arg`s.
 
 ### y18n.\_\_n(singularString, pluralString, count, arg, arg, arg)
 
-Print a localized string with appropriate pluralization.
+Print a localized string with appropriate pluralization. If `%d` is provided
+in the string, the `count` will replace this placeholder.
 
 ### y18n.setLocale(str)
 
