@@ -124,7 +124,7 @@ describe('y18n', function () {
         directory: __dirname + '/locales'
       }).__n
 
-      __n('%s cat', '%s cats', 1, 1).should.equal('1 cat')
+      __n('%d cat', '%d cats', 1).should.equal('1 cat')
     })
 
     it('uses the plural form if quantity is greater than 1', function () {
@@ -132,7 +132,7 @@ describe('y18n', function () {
         directory: __dirname + '/locales'
       }).__n
 
-      __n('%s cat', '%s cats', 2, 2).should.equal('2 cats')
+      __n('%d cat', '%d cats', 2).should.equal('2 cats')
     })
 
     it('allows additional arguments to be printed', function () {
@@ -140,7 +140,7 @@ describe('y18n', function () {
         directory: __dirname + '/locales'
       }).__n
 
-      __n('%s %s cat', '%s %s cats', 2, 2, 'black').should.equal('2 black cats')
+      __n('%d %s cat', '%d %s cats', 2, 'black').should.equal('2 black cats')
     })
 
     it('allows an alternative locale to be set', function () {
@@ -149,8 +149,21 @@ describe('y18n', function () {
         directory: __dirname + '/locales'
       }).__n
 
-      __n('%s cat', '%s cats', 1, 1).should.equal('1 land catfish')
-      __n('%s cat', '%s cats', 3, 3).should.equal('3 land catfishes')
+      __n('%d cat', '%d cats', 1).should.equal('1 land catfish')
+      __n('%d cat', '%d cats', 3).should.equal('3 land catfishes')
+    })
+
+    // See: https://github.com/bcoe/yargs/pull/210
+    it('allows a quantity placeholder to be provided in the plural but not singular form', function () {
+      var __n = y18n({
+        directory: __dirname + '/locales'
+      }).__n
+
+      var singular = __n('There is one monkey in the %s', 'There are %d monkeys in the %s', 1, 'tree')
+      var plural = __n('There is one monkey in the %s', 'There are %d monkeys in the %s', 3, 'tree')
+
+      singular.should.equal('There is one monkey in the tree')
+      plural.should.equal('There are 3 monkeys in the tree')
     })
 
     describe('the first time observing a pluralization', function () {
@@ -166,7 +179,7 @@ describe('y18n', function () {
           directory: __dirname + '/locales'
         }).__n
 
-        __n('%s le cat', '%s le cats', 1, 1).should.equal('1 le cat')
+        __n('%d le cat', '%d le cats', 1).should.equal('1 le cat')
       })
 
       it('writes to the locale file if updateFiles is true', function (done) {
@@ -175,10 +188,10 @@ describe('y18n', function () {
           directory: __dirname + '/locales'
         }).__n
 
-        __n('%s apple %s', '%s apples %s', 2, 'dude', function (err) {
+        __n('%d apple %s', '%d apples %s', 2, 'dude', function (err) {
           var locale = JSON.parse(fs.readFileSync('./test/locales/fr.json', 'utf-8'))
-          locale['%s apple %s'].one.should.equal('%s apple %s')
-          locale['%s apple %s'].other.should.equal('%s apples %s')
+          locale['%d apple %s'].one.should.equal('%d apple %s')
+          locale['%d apple %s'].other.should.equal('%d apples %s')
           return done(err)
         })
       })
@@ -190,7 +203,7 @@ describe('y18n', function () {
           directory: __dirname + '/locales'
         }).__n
 
-        __n('%s apple %s', '%s apples %s', 2, 'dude', function (err) {
+        __n('%d apple %s', '%d apples %s', 2, 'dude', function (err) {
           fs.existsSync('./test/locales/fr.json').should.equal(false)
           return done(err)
         })
