@@ -46,6 +46,25 @@ describe('y18n', function () {
       __('Hello').should.equal('Avast ye mateys!')
     })
 
+    it('uses language file if language_territory file does not exist', function () {
+      var __ = y18n({
+        locale: 'pirate_JM',
+        directory: __dirname + '/locales'
+      }).__
+
+      __('Hello').should.equal('Avast ye mateys!')
+    })
+
+    it('uses strings as given if no matching locale files found', function () {
+      var __ = y18n({
+        locale: 'zz_ZZ',
+        updateFiles: false,
+        directory: __dirname + '/locales'
+      }).__
+
+      __('Hello').should.equal('Hello')
+    })
+
     it('expands arguments into %s placeholders', function () {
       var __ = y18n({
         directory: __dirname + '/locales'
@@ -56,7 +75,7 @@ describe('y18n', function () {
 
     describe('the first time observing a word', function () {
       beforeEach(function (done) {
-        rimraf('./test/locales/fr.json', function () {
+        rimraf('./test/locales/fr*.json', function () {
           return done()
         })
       })
@@ -72,10 +91,26 @@ describe('y18n', function () {
 
       it('writes new word to locale file if updateFiles is true', function (done) {
         var __ = y18n({
-          locale: 'fr',
+          locale: 'fr_FR',
           directory: __dirname + '/locales'
         }).__
 
+        __('banana', function (err) {
+          var locale = JSON.parse(fs.readFileSync('./test/locales/fr_FR.json', 'utf-8'))
+          locale.banana.should.equal('banana')
+          return done(err)
+        })
+      })
+
+      it('writes new word to language file if language_territory file does not exist', function (done) {
+        fs.writeFileSync('./test/locales/fr.json', '{"meow": "le meow"}', 'utf-8')
+
+        var __ = y18n({
+          locale: 'fr_FR',
+          directory: __dirname + '/locales'
+        }).__
+
+        __('meow').should.equal('le meow')
         __('banana', function (err) {
           var locale = JSON.parse(fs.readFileSync('./test/locales/fr.json', 'utf-8'))
           locale.banana.should.equal('banana')
