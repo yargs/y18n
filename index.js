@@ -8,6 +8,7 @@ function Y18N (opts) {
   this.directory = opts.directory || './locales'
   this.updateFiles = typeof opts.updateFiles === 'boolean' ? opts.updateFiles : true
   this.locale = opts.locale || 'en'
+  this.fallbackToLanguage = typeof opts.fallbackToLanguage === 'boolean' ? opts.fallbackToLanguage : true
 
   // internal stuff.
   this.cache = {}
@@ -83,7 +84,7 @@ Y18N.prototype._readLocaleFile = function () {
 
 Y18N.prototype._resolveLocaleFile = function (directory, locale) {
   var file = path.resolve(directory, './', locale + '.json')
-  if (!this._fileExistsSync(file) && ~locale.lastIndexOf('_')) {
+  if (this.fallbackToLanguage && !this._fileExistsSync(file) && ~locale.lastIndexOf('_')) {
     // attempt fallback to language only
     var languageFile = path.resolve(directory, './', locale.split('_')[0] + '.json')
     if (this._fileExistsSync(languageFile)) file = languageFile

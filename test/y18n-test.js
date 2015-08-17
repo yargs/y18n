@@ -55,6 +55,17 @@ describe('y18n', function () {
       __('Hello').should.equal('Avast ye mateys!')
     })
 
+    it('does not fallback to language file if fallbackToLanguage is false', function () {
+      var __ = y18n({
+        locale: 'pirate_JM',
+        fallbackToLanguage: false,
+        updateFiles: false,
+        directory: __dirname + '/locales'
+      }).__
+
+      __('Hello').should.equal('Hello')
+    })
+
     it('uses strings as given if no matching locale files found', function () {
       var __ = y18n({
         locale: 'zz_ZZ',
@@ -114,6 +125,29 @@ describe('y18n', function () {
         __('banana', function (err) {
           var locale = JSON.parse(fs.readFileSync('./test/locales/fr.json', 'utf-8'))
           locale.banana.should.equal('banana')
+          return done(err)
+        })
+      })
+
+      it('does not write new word to language file if fallbackToLanguage is false', function (done) {
+        fs.writeFileSync('./test/locales/fr.json', '{"meow": "le meow"}', 'utf-8')
+
+        var __ = y18n({
+          locale: 'fr_FR',
+          fallbackToLanguage: false,
+          directory: __dirname + '/locales'
+        }).__
+
+        var frJson = JSON.parse(fs.readFileSync('./test/locales/fr.json', 'utf-8'))
+        frJson.should.deep.equal({
+          meow: 'le meow'
+        })
+
+        __('banana', function (err) {
+          var locale = JSON.parse(fs.readFileSync('./test/locales/fr_FR.json', 'utf-8'))
+          locale.should.deep.equal({
+            banana: 'banana'
+          })
           return done(err)
         })
       })
