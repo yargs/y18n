@@ -52,6 +52,9 @@ Create an instance of y18n with the config provided, options include:
 * `directory`: the locale directory, default `./locales`.
 * `updateFiles`: should newly observed strings be updated in file, default `true`.
 * `locale`: what locale should be used.
+* `fallbackToLanguage`: should fallback to a language-only file (e.g. `en.json`)
+  be allowed if a file matching the locale does not exist (e.g. `en_US.json`),
+  default `true`.
 
 ### y18n.\_\_(str, arg, arg, arg)
 

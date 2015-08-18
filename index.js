@@ -8,6 +8,7 @@ function Y18N (opts) {
   this.directory = opts.directory || './locales'
   this.updateFiles = typeof opts.updateFiles === 'boolean' ? opts.updateFiles : true
   this.locale = opts.locale || 'en'
+  this.fallbackToLanguage = typeof opts.fallbackToLanguage === 'boolean' ? opts.fallbackToLanguage : true
 
   // internal stuff.
   this.cache = {}
@@ -53,7 +54,7 @@ Y18N.prototype._processWriteQueue = function () {
   var locale = work[1]
   var cb = work[2]
 
-  var languageFile = path.resolve(directory, './', locale + '.json')
+  var languageFile = this._resolveLocaleFile(directory, locale)
   var serializedLocale = JSON.stringify(this.cache[locale], null, 2)
 
   fs.writeFile(languageFile, serializedLocale, 'utf-8', function (err) {
@@ -65,7 +66,7 @@ Y18N.prototype._processWriteQueue = function () {
 
 Y18N.prototype._readLocaleFile = function () {
   var localeLookup = {}
-  var languageFile = path.resolve(this.directory, './', this.locale + '.json')
+  var languageFile = this._resolveLocaleFile(this.directory, this.locale)
 
   try {
     localeLookup = JSON.parse(fs.readFileSync(languageFile, 'utf-8'))
@@ -79,6 +80,26 @@ Y18N.prototype._readLocaleFile = function () {
   }
 
   this.cache[this.locale] = localeLookup
+}
+
+Y18N.prototype._resolveLocaleFile = function (directory, locale) {
+  var file = path.resolve(directory, './', locale + '.json')
+  if (this.fallbackToLanguage && !this._fileExistsSync(file) && ~locale.lastIndexOf('_')) {
+    // attempt fallback to language only
+    var languageFile = path.resolve(directory, './', locale.split('_')[0] + '.json')
+    if (this._fileExistsSync(languageFile)) file = languageFile
+  }
+  return file
+}
+
+// this only exists because fs.existsSync() "will be deprecated"
+// see https://nodejs.org/api/fs.html#fs_fs_existssync_path
+Y18N.prototype._fileExistsSync = function (file) {
+  try {
+    return fs.statSync(file).isFile()
+  } catch (err) {
+    return false
+  }
 }
 
 Y18N.prototype.__n = function () {
