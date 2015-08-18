@@ -129,7 +129,7 @@ describe('y18n', function () {
         })
       })
 
-      it('does not write new word to language file if fallbackToLanguage is false', function (done) {
+      it('writes word to missing locale file, if no fallback takes place', function (done) {
         fs.writeFileSync('./test/locales/fr.json', '{"meow": "le meow"}', 'utf-8')
 
         var __ = y18n({
