@@ -138,15 +138,16 @@ describe('y18n', function () {
           directory: __dirname + '/locales'
         }).__
 
-        var frJson = JSON.parse(fs.readFileSync('./test/locales/fr.json', 'utf-8'))
-        frJson.should.deep.equal({
-          meow: 'le meow'
-        })
-
         __('banana', function (err) {
+          // 'banana' should be written to fr_FR.json
           var locale = JSON.parse(fs.readFileSync('./test/locales/fr_FR.json', 'utf-8'))
           locale.should.deep.equal({
             banana: 'banana'
+          })
+          // fr.json should remain untouched
+          var frJson = JSON.parse(fs.readFileSync('./test/locales/fr.json', 'utf-8'))
+          frJson.should.deep.equal({
+            meow: 'le meow'
           })
           return done(err)
         })
