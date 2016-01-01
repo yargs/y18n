@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:bcoe/y18n.git"
+    "url": "git@github.com:yargs/y18n.git"
   },
   "keywords": [
     "i18n",
@@ -20,9 +20,9 @@
   "author": "Ben Coe <ben@npmjs.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/bcoe/y18n/issues"
+    "url": "https://github.com/yargs/y18n/issues"
   },
-  "homepage": "https://github.com/bcoe/y18n",
+  "homepage": "https://github.com/yargs/y18n",
   "devDependencies": {
     "chai": "^3.3.0",
     "coveralls": "^2.11.4",
