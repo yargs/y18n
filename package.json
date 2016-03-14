@@ -12,6 +12,9 @@
     "type": "git",
     "url": "git@github.com:yargs/y18n.git"
   },
+  "files": [
+    "index.js"
+  ],
   "keywords": [
     "i18n",
     "internationalization",
