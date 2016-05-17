@@ -4,6 +4,7 @@ var expect = require('chai').expect
 var fs = require('fs')
 var rimraf = require('rimraf')
 var y18n = require('../')
+var path = require('path')
 
 require('chai').should()
 
@@ -20,7 +21,7 @@ describe('y18n', function () {
       expect(function () {
         var __ = y18n({
           locale: 'bad-locale',
-          directory: __dirname + '/locales'
+          directory: path.join(__dirname, '/locales')
         }).__
 
         __('Hello')
@@ -31,7 +32,7 @@ describe('y18n', function () {
   describe('__', function () {
     it('uses replacements from the default locale if none is configured', function () {
       var __ = y18n({
-        directory: __dirname + '/locales'
+        directory: path.join(__dirname, '/locales')
       }).__
 
       __('Hello').should.equal('Hello!')
@@ -40,7 +41,7 @@ describe('y18n', function () {
     it('uses replacements from the configured locale', function () {
       var __ = y18n({
         locale: 'pirate',
-        directory: __dirname + '/locales'
+        directory: path.join(__dirname, '/locales')
       }).__
 
       __('Hello').should.equal('Avast ye mateys!')
@@ -49,7 +50,7 @@ describe('y18n', function () {
     it('uses language file if language_territory file does not exist', function () {
       var __ = y18n({
         locale: 'pirate_JM',
-        directory: __dirname + '/locales'
+        directory: path.join(__dirname, '/locales')
       }).__
 
       __('Hello').should.equal('Avast ye mateys!')
@@ -60,7 +61,7 @@ describe('y18n', function () {
         locale: 'pirate_JM',
         fallbackToLanguage: false,
         updateFiles: false,
-        directory: __dirname + '/locales'
+        directory: path.join(__dirname, '/locales')
       }).__
 
       __('Hello').should.equal('Hello')
@@ -70,7 +71,7 @@ describe('y18n', function () {
       var __ = y18n({
         locale: 'zz_ZZ',
         updateFiles: false,
-        directory: __dirname + '/locales'
+        directory: path.join(__dirname, '/locales')
       }).__
 
       __('Hello').should.equal('Hello')
@@ -78,7 +79,7 @@ describe('y18n', function () {
 
     it('expands arguments into %s placeholders', function () {
       var __ = y18n({
-        directory: __dirname + '/locales'
+        directory: path.join(__dirname, '/locales')
       }).__
 
       __('Hello %s %s', 'Ben', 'Coe').should.equal('Hello Ben Coe')
@@ -94,7 +95,7 @@ describe('y18n', function () {
       it('returns the word immediately', function () {
         var __ = y18n({
           locale: 'fr',
-          directory: __dirname + '/locales'
+          directory: path.join(__dirname, '/locales')
         }).__
 
         __('banana').should.equal('banana')
@@ -103,7 +104,7 @@ describe('y18n', function () {
       it('writes new word to locale file if updateFiles is true', function (done) {
         var __ = y18n({
           locale: 'fr_FR',
-          directory: __dirname + '/locales'
+          directory: path.join(__dirname, '/locales')
         }).__
 
         __('banana', function (err) {
@@ -118,7 +119,7 @@ describe('y18n', function () {
 
         var __ = y18n({
           locale: 'fr_FR',
-          directory: __dirname + '/locales'
+          directory: path.join(__dirname, '/locales')
         }).__
 
         __('meow').should.equal('le meow')
@@ -135,7 +136,7 @@ describe('y18n', function () {
         var __ = y18n({
           locale: 'fr_FR',
           fallbackToLanguage: false,
-          directory: __dirname + '/locales'
+          directory: path.join(__dirname, '/locales')
         }).__
 
         __('banana', function (err) {
@@ -156,7 +157,7 @@ describe('y18n', function () {
       it('handles enqueuing multiple writes at the same time', function (done) {
         var __ = y18n({
           locale: 'fr',
-          directory: __dirname + '/locales'
+          directory: path.join(__dirname, '/locales')
         }).__
 
         __('apple')
@@ -177,7 +178,7 @@ describe('y18n', function () {
         var __ = y18n({
           locale: 'fr',
           updateFiles: false,
-          directory: __dirname + '/locales'
+          directory: path.join(__dirname, '/locales')
         }).__
 
         __('banana', function (err) {
@@ -191,7 +192,7 @@ describe('y18n', function () {
   describe('__n', function () {
     it('uses the singular form if quantity is 1', function () {
       var __n = y18n({
-        directory: __dirname + '/locales'
+        directory: path.join(__dirname, '/locales')
       }).__n
 
       __n('%d cat', '%d cats', 1).should.equal('1 cat')
@@ -199,7 +200,7 @@ describe('y18n', function () {
 
     it('uses the plural form if quantity is greater than 1', function () {
       var __n = y18n({
-        directory: __dirname + '/locales'
+        directory: path.join(__dirname, '/locales')
       }).__n
 
       __n('%d cat', '%d cats', 2).should.equal('2 cats')
@@ -207,7 +208,7 @@ describe('y18n', function () {
 
     it('allows additional arguments to be printed', function () {
       var __n = y18n({
-        directory: __dirname + '/locales'
+        directory: path.join(__dirname, '/locales')
       }).__n
 
       __n('%d %s cat', '%d %s cats', 2, 'black').should.equal('2 black cats')
@@ -216,7 +217,7 @@ describe('y18n', function () {
     it('allows an alternative locale to be set', function () {
       var __n = y18n({
         locale: 'pirate',
-        directory: __dirname + '/locales'
+        directory: path.join(__dirname, '/locales')
       }).__n
 
       __n('%d cat', '%d cats', 1).should.equal('1 land catfish')
@@ -226,7 +227,7 @@ describe('y18n', function () {
     // See: https://github.com/bcoe/yargs/pull/210
     it('allows a quantity placeholder to be provided in the plural but not singular form', function () {
       var __n = y18n({
-        directory: __dirname + '/locales'
+        directory: path.join(__dirname, '/locales')
       }).__n
 
       var singular = __n('There is one monkey in the %s', 'There are %d monkeys in the %s', 1, 'tree')
@@ -246,7 +247,7 @@ describe('y18n', function () {
       it('returns the pluralization immediately', function () {
         var __n = y18n({
           locale: 'fr',
-          directory: __dirname + '/locales'
+          directory: path.join(__dirname, '/locales')
         }).__n
 
         __n('%d le cat', '%d le cats', 1).should.equal('1 le cat')
@@ -255,7 +256,7 @@ describe('y18n', function () {
       it('writes to the locale file if updateFiles is true', function (done) {
         var __n = y18n({
           locale: 'fr',
-          directory: __dirname + '/locales'
+          directory: path.join(__dirname, '/locales')
         }).__n
 
         __n('%d apple %s', '%d apples %s', 2, 'dude', function (err) {
@@ -270,7 +271,7 @@ describe('y18n', function () {
         var __n = y18n({
           locale: 'fr',
           updateFiles: false,
-          directory: __dirname + '/locales'
+          directory: path.join(__dirname, '/locales')
         }).__n
 
         __n('%d apple %s', '%d apples %s', 2, 'dude', function (err) {
@@ -284,7 +285,7 @@ describe('y18n', function () {
   describe('setLocale', function () {
     it('switches the locale', function () {
       var i18n = y18n({
-        directory: __dirname + '/locales'
+        directory: path.join(__dirname, '/locales')
       })
 
       i18n.__('Hello').should.equal('Hello!')
@@ -303,7 +304,7 @@ describe('y18n', function () {
     it('updates the locale with the new lookups provided', function () {
       var i18n = y18n({
         locale: 'fr',
-        directory: __dirname + '/locales'
+        directory: path.join(__dirname, '/locales')
       })
 
       i18n.updateLocale({
@@ -318,7 +319,7 @@ describe('y18n', function () {
 
       var i18n = y18n({
         locale: 'fr',
-        directory: __dirname + '/locales'
+        directory: path.join(__dirname, '/locales')
       })
 
       i18n.updateLocale({
