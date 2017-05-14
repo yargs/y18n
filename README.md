@@ -23,6 +23,19 @@ output:
 
 `my awesome string foo`
 
+_using tagged template literals_
+
+```js
+var __ = require('y18n').__
+var str = 'foo'
+
+console.log(__`my awesome string ${str}`)
+```
+
+output:
+
+`my awesome string foo`
+
 _pluralization support:_
 
 ```js
@@ -59,6 +72,10 @@ Create an instance of y18n with the config provided, options include:
 ### y18n.\_\_(str, arg, arg, arg)
 
 Print a localized string, `%s` will be replaced with `arg`s.
+
+This function can also be used as a tag for a template literal. You can use it
+like this: <code>__&#96;hello ${'world'}&#96;</code>. This will be equivalent to
+`__('hello %s', 'world')`.
 
 ### y18n.\_\_n(singularString, pluralString, count, arg, arg, arg)
 

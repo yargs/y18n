@@ -1,5 +1,6 @@
 {
   "Hello": "Avast ye mateys!",
+  "Hi, %s %s!": "Yarr! Shiver me timbers, why 'tis %s %s!",
   "%d cat": {
     "one": "%d land catfish",
     "other": "%d land catfishes"
