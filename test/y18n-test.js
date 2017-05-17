@@ -30,6 +30,14 @@ describe('y18n', function () {
   })
 
   describe('__', function () {
+    it('can be used as a tag for template literals', function () {
+      var __ = y18n({
+        locale: 'pirate',
+        directory: path.join(__dirname, 'locales')
+      }).__
+
+      __`Hi, ${'Ben'} ${'Coe'}!`.should.equal('Yarr! Shiver me timbers, why \'tis Ben Coe!')
+    })
     it('uses replacements from the default locale if none is configured', function () {
       var __ = y18n({
         directory: path.join(__dirname, 'locales')
