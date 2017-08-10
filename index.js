@@ -49,7 +49,7 @@ Y18N.prototype._taggedLiteral = function (parts) {
   parts.forEach(function (part, i) {
     var arg = args[i + 1]
     str += part
-    if (arg) {
+    if (typeof arg !== 'undefined') {
       str += '%s'
     }
   })
