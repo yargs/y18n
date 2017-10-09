@@ -6,7 +6,8 @@
   "scripts": {
     "pretest": "standard",
     "test": "nyc mocha",
-    "coverage": "nyc report --reporter=text-lcov | coveralls"
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "release": "standard-version"
   },
   "repository": {
     "type": "git",
@@ -32,6 +33,7 @@
     "mocha": "^3.0.0",
     "nyc": "^11.0.1",
     "rimraf": "^2.5.0",
-    "standard": "^10.0.0-beta.0"
+    "standard": "^10.0.0-beta.0",
+    "standard-version": "^4.2.0"
   }
 }
