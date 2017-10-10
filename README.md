@@ -4,6 +4,7 @@
 [![Coverage Status][coveralls-image]][coveralls-url]
 [![NPM version][npm-image]][npm-url]
 [![js-standard-style][standard-image]][standard-url]
+[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
 
 The bare-bones internationalization library used by yargs.
 
