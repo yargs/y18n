@@ -83,16 +83,20 @@ Y18N.prototype._processWriteQueue = function () {
 Y18N.prototype._readLocaleFile = function () {
   var localeLookup = {}
   var languageFile = this._resolveLocaleFile(this.directory, this.locale)
+  var fileContents
 
   try {
-    localeLookup = JSON.parse(fs.readFileSync(languageFile, 'utf-8'))
+    fileContents = fs.readFileSync(languageFile, 'utf-8')
   } catch (err) {
-    if (err instanceof SyntaxError) {
+    // ENOENT
+  }
+  if (fileContents) {
+    try {
+      localeLookup = JSON.parse(fileContents)
+    } catch (err) {
       err.message = 'syntax error in ' + languageFile
+      throw err
     }
-
-    if (err.code === 'ENOENT') localeLookup = {}
-    else throw err
   }
 
   this.cache[this.locale] = localeLookup
