@@ -33,7 +33,7 @@
     "mocha": "^4.0.1",
     "nyc": "^11.0.1",
     "rimraf": "^2.5.0",
-    "standard": "^10.0.0-beta.0",
+    "standard": "^11.0.0",
     "standard-version": "^4.2.0"
   }
 }
