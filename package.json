@@ -35,5 +35,8 @@
     "rimraf": "^2.5.0",
     "standard": "^10.0.0-beta.0",
     "standard-version": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=10"
   }
 }
