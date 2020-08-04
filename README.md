@@ -1,7 +1,5 @@
 # y18n
 
-[![Build Status][travis-image]][travis-url]
-[![Coverage Status][coveralls-image]][coveralls-url]
 [![NPM version][npm-image]][npm-url]
 [![js-standard-style][standard-image]][standard-url]
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
@@ -105,10 +103,6 @@ post on why we think this is important](https://medium.com/the-node-js-collectio
 
 ISC
 
-[travis-url]: https://travis-ci.org/yargs/y18n
-[travis-image]: https://img.shields.io/travis/yargs/y18n.svg
-[coveralls-url]: https://coveralls.io/github/yargs/y18n
-[coveralls-image]: https://img.shields.io/coveralls/yargs/y18n.svg
 [npm-url]: https://npmjs.org/package/y18n
 [npm-image]: https://img.shields.io/npm/v/y18n.svg
 [standard-image]: https://img.shields.io/badge/code%20style-standard-brightgreen.svg
