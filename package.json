@@ -22,17 +22,16 @@
     "index.js"
   ],
   "scripts": {
-    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "coverage": "nyc report && nyc check-coverage",
     "release": "standard-version",
     "pretest": "standard",
     "test": "nyc mocha"
   },
   "devDependencies": {
     "chai": "^4.0.1",
-    "coveralls": "^3.0.0",
     "mocha": "^4.0.1",
-    "nyc": "^11.0.1",
-    "rimraf": "^2.5.0",
+    "nyc": "^15.1.0",
+    "rimraf": "^3.0.2",
     "standard": "^10.0.0-beta.0",
     "standard-version": "^5.0.0"
   },
