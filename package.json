@@ -23,7 +23,6 @@
   ],
   "scripts": {
     "coverage": "nyc report && nyc check-coverage",
-    "release": "standard-version",
     "pretest": "standard",
     "test": "nyc mocha"
   },
@@ -32,8 +31,7 @@
     "mocha": "^4.0.1",
     "nyc": "^15.1.0",
     "rimraf": "^3.0.2",
-    "standard": "^10.0.0-beta.0",
-    "standard-version": "^5.0.0"
+    "standard": "^10.0.0-beta.0"
   },
   "engines": {
     "node": ">=10"
