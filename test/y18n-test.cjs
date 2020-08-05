@@ -1,10 +1,10 @@
 /* global describe, it, after, beforeEach */
 
-var expect = require('chai').expect
-var fs = require('fs')
-var rimraf = require('rimraf')
-var y18n = require('../')
-var path = require('path')
+const expect = require('chai').expect
+const fs = require('fs')
+const rimraf = require('rimraf')
+const y18n = require('../build/index.cjs')
+const path = require('path')
 
 require('chai').should()
 
