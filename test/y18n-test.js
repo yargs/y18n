@@ -11,7 +11,7 @@ require('chai').should()
 describe('y18n', function () {
   describe('configure', function () {
     it('allows you to override the default y18n configuration', function () {
-      var y = y18n({locale: 'fr'})
+      var y = y18n({ locale: 'fr' })
       y.locale.should.equal('fr')
     })
   })

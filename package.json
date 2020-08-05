@@ -22,16 +22,17 @@
     "index.js"
   ],
   "scripts": {
-    "coverage": "nyc report && nyc check-coverage",
+    "fix": "standard --fix",
+    "coverage": "c8 --check-coverage report",
     "pretest": "standard",
-    "test": "nyc mocha"
+    "test": "c8 mocha"
   },
   "devDependencies": {
+    "c8": "^7.3.0",
     "chai": "^4.0.1",
     "mocha": "^8.0.0",
-    "nyc": "^15.1.0",
     "rimraf": "^3.0.2",
-    "standard": "^10.0.0-beta.0"
+    "standard": "^14.3.4"
   },
   "engines": {
     "node": ">=10"
