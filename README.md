@@ -13,9 +13,9 @@ Inspired by [i18n](https://www.npmjs.com/package/i18n).
 _simple string translation:_
 
 ```js
-var __ = require('y18n').__
+const __ = require('y18n')().__;
 
-console.log(__('my awesome string %s', 'foo'))
+console.log(__('my awesome string %s', 'foo'));
 ```
 
 output:
@@ -25,10 +25,11 @@ output:
 _using tagged template literals_
 
 ```js
-var __ = require('y18n').__
-var str = 'foo'
+const __ = require('y18n')().__;
 
-console.log(__`my awesome string ${str}`)
+const str = 'foo';
+
+console.log(__`my awesome string ${str}`);
 ```
 
 output:
@@ -38,9 +39,9 @@ output:
 _pluralization support:_
 
 ```js
-var __n = require('y18n').__n
+const __n = require('y18n')().__n;
 
-console.log(__n('one fish %s', '%d fishes %s', 2, 'foo'))
+console.log(__n('one fish %s', '%d fishes %s', 2, 'foo'));
 ```
 
 output:
