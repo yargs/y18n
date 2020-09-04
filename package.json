@@ -3,7 +3,7 @@
   "version": "4.0.0",
   "description": "the bare-bones internationalization library used by yargs",
   "exports": {
-    "import": "./build/lib/index.js",
+    "import": "./index.mjs",
     "require": "./build/index.cjs"
   },
   "type": "module",
@@ -26,17 +26,17 @@
   "author": "Ben Coe <bencoe@gmail.com>",
   "main": "index.js",
   "scripts": {
-    "check": "standardx '**/*.ts'",
-    "fix": "standardx --fix '**/*.ts'",
+    "check": "standardx '**/*.ts' '**/*.cjs' '**/*.mjs'",
+    "fix": "standardx --fix '**/*.ts' '**/*.cjs' '**/*.mjs'",
     "pretest": "rimraf build && tsc -p tsconfig.test.json && cross-env NODE_ENV=test npm run build:cjs",
     "test": "c8 --reporter=text --reporter=html mocha test/*.cjs",
+    "test:esm": "c8 --reporter=text --reporter=html mocha test/esm/*.mjs",
     "posttest": "npm run check",
     "coverage": "c8 report --check-coverage",
     "precompile": "rimraf build",
     "compile": "tsc",
     "postcompile": "npm run build:cjs",
     "build:cjs": "rollup -c",
-    "postbuild:cjs": "node scripts/replace-legacy-export.cjs",
     "prepare": "npm run compile"
   },
   "devDependencies": {
@@ -48,11 +48,12 @@
     "mocha": "^8.0.0",
     "rimraf": "^3.0.2",
     "standardx": "^5.0.0",
+    "ts-transform-default-export": "^1.0.2",
     "typescript": "^3.9.7"
   },
   "files": [
-    "browser.js",
-    "build"
+    "build",
+    "index.mjs"
   ],
   "engines": {
     "node": ">=10"
