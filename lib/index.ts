@@ -1,9 +1,4 @@
-import { readFileSync, statSync, writeFile } from 'fs'
-import { resolve } from 'path'
-// TODO: implement minimal version of util.format.
-const util = require('util')
-
-interface Y18NOpts {
+export interface Y18NOpts {
   directory?: string;
   updateFiles?: boolean;
   locale?: string;
@@ -16,7 +11,7 @@ interface Work {
   cb: Function
 }
 
-interface Locale {
+export interface Locale {
   [key: string]: string
 }
 
@@ -24,6 +19,17 @@ interface CacheEntry {
   [key: string]: string;
 }
 
+export interface PlatformShim {
+  fs: {
+    readFileSync: Function,
+    statSync: Function,
+    writeFile: Function
+  },
+  format: Function,
+  resolve: Function
+}
+
+let shim: PlatformShim
 class Y18N {
   directory: string;
   updateFiles: boolean;
@@ -73,7 +79,7 @@ class Y18N {
       cb()
     }
 
-    return util.format.apply(util, [this.cache[this.locale][str] || str].concat(args as string[]))
+    return shim.format.apply(shim.format, [this.cache[this.locale][str] || str].concat(args as string[]))
   }
 
   __n () {
@@ -117,7 +123,7 @@ class Y18N {
     var values: (string|number)[] = [str]
     if (~str.indexOf('%d')) values.push(quantity)
 
-    return util.format.apply(util, values.concat(args))
+    return shim.format.apply(shim.format, values.concat(args))
   }
 
   setLocale (locale: string) {
@@ -147,7 +153,6 @@ class Y18N {
         str += '%s'
       }
     })
-    console.info([str].concat([].slice.call(args, 1)))
     return this.__.apply(this, [str].concat([].slice.call(args, 1)))
   }
 
@@ -168,7 +173,7 @@ class Y18N {
     var languageFile = this._resolveLocaleFile(directory, locale)
     var serializedLocale = JSON.stringify(this.cache[locale], null, 2)
 
-    writeFile(languageFile, serializedLocale, 'utf-8', function (err) {
+    shim.fs.writeFile(languageFile, serializedLocale, 'utf-8', function (err: Error) {
       _this.writeQueue.shift()
       if (_this.writeQueue.length > 0) _this._processWriteQueue()
       cb(err)
@@ -180,7 +185,7 @@ class Y18N {
     var languageFile = this._resolveLocaleFile(this.directory, this.locale)
 
     try {
-      localeLookup = JSON.parse(readFileSync(languageFile, 'utf-8'))
+      localeLookup = JSON.parse(shim.fs.readFileSync(languageFile, 'utf-8'))
     } catch (err) {
       if (err instanceof SyntaxError) {
         err.message = 'syntax error in ' + languageFile
@@ -194,10 +199,10 @@ class Y18N {
   }
 
   _resolveLocaleFile (directory: string, locale: string) {
-    var file = resolve(directory, './', locale + '.json')
+    var file = shim.resolve(directory, './', locale + '.json')
     if (this.fallbackToLanguage && !this._fileExistsSync(file) && ~locale.lastIndexOf('_')) {
       // attempt fallback to language only
-      var languageFile = resolve(directory, './', locale.split('_')[0] + '.json')
+      var languageFile = shim.resolve(directory, './', locale.split('_')[0] + '.json')
       if (this._fileExistsSync(languageFile)) file = languageFile
     }
     return file
@@ -205,14 +210,15 @@ class Y18N {
 
   _fileExistsSync (file: string) {
     try {
-      return statSync(file).isFile()
+      return shim.fs.statSync(file).isFile()
     } catch (err) {
       return false
     }
   }
 }
 
-function y18n (opts: Y18NOpts) {
+export function y18n (opts: Y18NOpts, _shim: PlatformShim) {
+  shim = _shim
   const y18n = new Y18N(opts)
   return {
     __: y18n.__.bind(y18n),
@@ -223,5 +229,3 @@ function y18n (opts: Y18NOpts) {
     locale: y18n.locale
   }
 }
-
-export default y18n
