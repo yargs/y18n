@@ -46,7 +46,6 @@ class Y18N {
   }
 
   __ (...args: (string|Function)[]): string {
-    // const args = Array.prototype.slice.call(arguments)
     if (typeof arguments[0] !== 'string') {
       return this._taggedLiteral(arguments[0] as string[], ...arguments)
     }
@@ -148,7 +147,8 @@ class Y18N {
         str += '%s'
       }
     })
-    return this.__.apply(null, [str].concat([].slice.call(arguments, 1)))
+    console.info([str].concat([].slice.call(args, 1)))
+    return this.__.apply(this, [str].concat([].slice.call(args, 1)))
   }
 
   _enqueueWrite (work: Work) {
@@ -219,7 +219,8 @@ function y18n (opts: Y18NOpts) {
     __n: y18n.__n.bind(y18n),
     setLocale: y18n.setLocale.bind(y18n),
     getLocale: y18n.getLocale.bind(y18n),
-    updateLocale: y18n.updateLocale.bind(y18n)
+    updateLocale: y18n.updateLocale.bind(y18n),
+    locale: y18n.locale
   }
 }
 
