@@ -48,6 +48,7 @@
     "gts": "^2.0.2",
     "mocha": "^8.0.0",
     "rimraf": "^3.0.2",
+    "rollup": "^2.26.10",
     "standardx": "^5.0.0",
     "ts-transform-default-export": "^1.0.2",
     "typescript": "^3.9.7"
