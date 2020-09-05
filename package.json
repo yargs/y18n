@@ -8,7 +8,6 @@
   },
   "type": "module",
   "module": "./build/lib/index.js",
-  "types": "./build/index.cjs.d.ts",
   "keywords": [
     "i18n",
     "internationalization",
@@ -21,7 +20,7 @@
   "repository": "yargs/y18n",
   "license": "ISC",
   "author": "Ben Coe <bencoe@gmail.com>",
-  "main": "index.js",
+  "main": "./build/index.cjs",
   "scripts": {
     "check": "standardx '**/*.ts' '**/*.cjs' '**/*.mjs'",
     "fix": "standardx --fix '**/*.ts' '**/*.cjs' '**/*.mjs'",
