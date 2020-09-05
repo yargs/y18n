@@ -22,9 +22,9 @@ interface CacheEntry {
 export interface PlatformShim {
   fs: {
     readFileSync: Function,
-    statSync: Function,
     writeFile: Function
   },
+  exists: Function,
   format: Function,
   resolve: Function
 }
@@ -209,11 +209,7 @@ class Y18N {
   }
 
   _fileExistsSync (file: string) {
-    try {
-      return shim.fs.statSync(file).isFile()
-    } catch (err) {
-      return false
-    }
+    return shim.exists(file)
   }
 }
 

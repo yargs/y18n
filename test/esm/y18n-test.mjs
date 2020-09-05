@@ -5,7 +5,7 @@ import y18n from '../../index.mjs'
 
 describe('y18n', function () {
   it('__ smoke test', function () {
-    var __ = y18n({
+    const __ = y18n({
       locale: 'pirate',
       directory: './test/locales'
     }).__

@@ -5,9 +5,15 @@ import { resolve } from 'path'
 export default {
   fs: {
     readFileSync,
-    statSync,
     writeFile
   },
   format,
-  resolve
+  resolve,
+  exists: (file: string) => {
+    try {
+      return statSync(file).isFile()
+    } catch (err) {
+      return false
+    }
+  }
 }
