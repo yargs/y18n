@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.0.1](https://www.github.com/yargs/y18n/compare/v5.0.0...v5.0.1) (2020-09-05)
+
+
+### Bug Fixes
+
+* main had old index path ([#98](https://www.github.com/yargs/y18n/issues/98)) ([124f7b0](https://www.github.com/yargs/y18n/commit/124f7b047ba9596bdbdf64459988304e77f3de1b))
+
 ## [5.0.0](https://www.github.com/yargs/y18n/compare/v4.0.0...v5.0.0) (2020-09-05)
 
 
