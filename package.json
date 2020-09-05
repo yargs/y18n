@@ -18,10 +18,7 @@
   "bugs": {
     "url": "https://github.com/yargs/y18n/issues"
   },
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:yargs/y18n.git"
-  },
+  "repository": "yargs/y18n",
   "license": "ISC",
   "author": "Ben Coe <bencoe@gmail.com>",
   "main": "index.js",
