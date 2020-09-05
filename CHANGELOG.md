@@ -2,7 +2,6 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-<a name="4.0.0"></a>
 ## [5.0.0](https://www.github.com/yargs/y18n/compare/v4.0.0...v5.0.0) (2020-09-05)
 
 
