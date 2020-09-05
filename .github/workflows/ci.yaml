@@ -39,3 +39,25 @@ jobs:
       - run: npm install
       - run: npm test
       - run: npm run coverage
+  esm:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '14.x'
+      - run: npm install
+      - run: npm run test:esm
+  deno:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 14
+      - run: npm install
+      - run: npm run compile
+      - uses: denolib/setup-deno@v2
+      - run: |
+          deno --version
+          deno test --allow-read test/deno/y18n-test.ts

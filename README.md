@@ -48,6 +48,23 @@ output:
 
 `2 fishes foo`
 
+## Deno Example
+
+As of `v5` `y18n` supports [Deno](https://github.com/denoland/deno):
+
+```typescript
+import y18n from "https://deno.land/x/y18n/deno.ts";
+
+const __ = y18n({
+  locale: 'pirate',
+  directory: './test/locales'
+}).__
+
+console.info(__`Hi, ${'Ben'} ${'Coe'}!`)
+```
+
+You will need to run with `--allow-read` to load alternative locales.
+
 ## JSON Language Files
 
 The JSON language files should be stored in a `./locales` folder.

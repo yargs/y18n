@@ -1,0 +1,9 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "sourceMap": true
+  },
+  "exclude": [
+    "lib/platform-shims/deno.ts"
+  ]
+}

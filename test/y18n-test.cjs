@@ -1,17 +1,17 @@
 /* global describe, it, after, beforeEach */
 
-var expect = require('chai').expect
-var fs = require('fs')
-var rimraf = require('rimraf')
-var y18n = require('../')
-var path = require('path')
+const expect = require('chai').expect
+const fs = require('fs')
+const rimraf = require('rimraf')
+const y18n = require('../build/index.cjs')
+const path = require('path')
 
 require('chai').should()
 
 describe('y18n', function () {
   describe('configure', function () {
     it('allows you to override the default y18n configuration', function () {
-      var y = y18n({ locale: 'fr' })
+      const y = y18n({ locale: 'fr' })
       y.locale.should.equal('fr')
     })
   })
@@ -43,7 +43,6 @@ describe('y18n', function () {
         locale: 'pirate',
         directory: path.join(__dirname, 'locales')
       }).__
-
       __`Hi, ${'Ben'} ${''}!`.should.equal('Yarr! Shiver me timbers, why \'tis Ben !')
     })
     it('uses replacements from the default locale if none is configured', function () {
