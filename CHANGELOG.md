@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.0.2](https://www.github.com/yargs/y18n/compare/v5.0.1...v5.0.2) (2020-10-01)
+
+
+### Bug Fixes
+
+* **deno:** update types for deno ^1.4.0 ([#100](https://www.github.com/yargs/y18n/issues/100)) ([3834d9a](https://www.github.com/yargs/y18n/commit/3834d9ab1332f2937c935ada5e76623290efae81))
+
 ### [5.0.1](https://www.github.com/yargs/y18n/compare/v5.0.0...v5.0.1) (2020-09-05)
 
 
