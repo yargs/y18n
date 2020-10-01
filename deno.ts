@@ -1,5 +1,5 @@
 import { y18n as _y18n } from './build/lib/index.js'
-import { Y18NOpts } from './build/lib/index.d.ts'
+import type { Y18NOpts } from './build/lib/index.d.ts'
 import shim from './lib/platform-shims/deno.ts'
 
 const y18n = (opts: Y18NOpts) => {
