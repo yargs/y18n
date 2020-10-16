@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.0.3](https://www.github.com/yargs/y18n/compare/v5.0.2...v5.0.3) (2020-10-16)
+
+
+### Bug Fixes
+
+* **exports:** node 13.0-13.6 require a string fallback ([#103](https://www.github.com/yargs/y18n/issues/103)) ([e39921e](https://www.github.com/yargs/y18n/commit/e39921e1017f88f5d8ea97ddea854ffe92d68e74))
+
 ### [5.0.2](https://www.github.com/yargs/y18n/compare/v5.0.1...v5.0.2) (2020-10-01)
 
 
