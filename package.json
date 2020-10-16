@@ -2,13 +2,15 @@
   "name": "y18n",
   "version": "5.0.3",
   "description": "the bare-bones internationalization library used by yargs",
-  "exports": [
-    {
-      "import": "./index.mjs",
-      "require": "./build/index.cjs"
-    },
-    "./build/index.cjs"
-  ],
+  "exports": {
+    ".": [
+      {
+        "import": "./index.mjs",
+        "require": "./build/index.cjs"
+      },
+      "./build/index.cjs"
+    ]
+  },
   "type": "module",
   "module": "./build/lib/index.js",
   "keywords": [
