@@ -136,7 +136,7 @@ class Y18N {
 
   updateLocale (obj: Locale) {
     if (this.locale === '__proto__') {
-      return;
+      return
     }
 
     if (!this.cache[this.locale]) this._readLocaleFile()
