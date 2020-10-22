@@ -343,6 +343,17 @@ describe('y18n', function () {
 
       i18n.__('meow').should.equal('le meow')
     })
+
+    it('prevents prototype pollution', function() {
+      var i18n = y18n();
+
+      i18n.setLocale('__proto__');
+
+      i18n.updateLocale({polluted: 'Yes! Its Polluted'});
+
+      expect({}.polluted).to.be.undefined;
+
+    })
   })
 
   describe('getLocale', function () {

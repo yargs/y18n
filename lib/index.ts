@@ -136,7 +136,7 @@ class Y18N {
 
   updateLocale (obj: Locale) {
     if (this.locale === '__proto__') {
-      throw new Error('Prototype pollution attempt detected')
+      return;
     }
 
     if (!this.cache[this.locale]) this._readLocaleFile()
