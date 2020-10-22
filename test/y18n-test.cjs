@@ -351,7 +351,7 @@ describe('y18n', function () {
 
       i18n.updateLocale({ polluted: 'Yes! Its Polluted' })
 
-      expect({}.polluted).to.be.undefined
+      expect({}).to.not.have.property('polluted')
     })
   })
 
