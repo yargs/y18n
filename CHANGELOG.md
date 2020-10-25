@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.0.5](https://www.github.com/yargs/y18n/compare/v5.0.4...v5.0.5) (2020-10-25)
+
+
+### Bug Fixes
+
+* address prototype pollution issue ([#108](https://www.github.com/yargs/y18n/issues/108)) ([a9ac604](https://www.github.com/yargs/y18n/commit/a9ac604abf756dec9687be3843e2c93bfe581f25))
+
 ### [5.0.4](https://www.github.com/yargs/y18n/compare/v5.0.3...v5.0.4) (2020-10-16)
 
 
