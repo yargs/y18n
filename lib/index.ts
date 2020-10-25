@@ -47,7 +47,7 @@ class Y18N {
     this.fallbackToLanguage = typeof opts.fallbackToLanguage === 'boolean' ? opts.fallbackToLanguage : true
 
     // internal stuff.
-    this.cache = {}
+    this.cache = Object.create(null)
     this.writeQueue = []
   }
 
