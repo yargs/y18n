@@ -336,6 +336,24 @@ describe('y18n', function () {
     })
   })
 
+  // See: https://github.com/yargs/y18n/issues/96,
+  // https://github.com/yargs/y18n/pull/107
+  describe('prototype pollution', function () {
+    it('does not pollute prototype, with __proto__ locale', function () {
+      const y = y18n()
+      y.setLocale('__proto__')
+      y.updateLocale({ polluted: '👽' })
+      y.__('polluted').should.equal('👽')
+      ;(typeof polluted).should.equal('undefined')
+    })
+
+    it('does not pollute prototype, when __ is used with __proto__ locale', function () {
+      const __ = y18n({ locale: '__proto__' }).__
+      __('hello')
+      ;(typeof {}.hello).should.equal('undefined')
+    })
+  })
+
   after(function () {
     rimraf.sync('./test/locales/fr.json')
   })
