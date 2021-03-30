@@ -54,6 +54,13 @@ All notable changes to this project will be documented in this file. See [standa
 
 * drops Node 6 and 4. begin following Node.js LTS schedule ([#89](https://www.github.com/yargs/y18n/issues/89)) ([3cc0c28](https://www.github.com/yargs/y18n/commit/3cc0c287240727b84eaf1927f903612ec80f5e43))
 
+### 4.0.1 (2020-10-25)
+
+
+### Bug Fixes
+
+* address prototype pollution issue ([#108](https://www.github.com/yargs/y18n/issues/108)) ([a9ac604](https://www.github.com/yargs/y18n/commit/7de58ca0d315990cdb38234e97fc66254cdbcd71))
+
 ## [4.0.0](https://github.com/yargs/y18n/compare/v3.2.1...v4.0.0) (2017-10-10)
 
 
