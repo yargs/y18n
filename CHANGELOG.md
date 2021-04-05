@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.0.6](https://www.github.com/yargs/y18n/compare/v5.0.5...v5.0.6) (2021-04-05)
+
+
+### Bug Fixes
+
+* **webpack:** skip readFileSync if not defined ([#117](https://www.github.com/yargs/y18n/issues/117)) ([6966fa9](https://www.github.com/yargs/y18n/commit/6966fa91d2881cc6a6c531e836099e01f4da1616))
+
 ### [5.0.5](https://www.github.com/yargs/y18n/compare/v5.0.4...v5.0.5) (2020-10-25)
 
 
