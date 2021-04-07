@@ -1,6 +1,6 @@
 {
   "name": "y18n",
-  "version": "5.0.7",
+  "version": "5.0.8",
   "description": "the bare-bones internationalization library used by yargs",
   "exports": {
     ".": [
