@@ -12,3 +12,4 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           command: manifest
+          default-branch: 4.x.x
