@@ -1,7 +1,7 @@
 on:
    push:
      branches:
-       - master
+       - 4.x.x
 name: release-please
 jobs:
   release-please:
@@ -11,5 +11,4 @@ jobs:
         id: release
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          release-type: node
-          package-name: y18n
+          command: manifest
