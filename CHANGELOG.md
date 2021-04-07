@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.0.2](https://www.github.com/yargs/y18n/compare/y18n-v4.0.1...y18n-v4.0.2) (2021-04-07)
+
+
+### Bug Fixes
+
+* **security:** ensure entry exists for backport ([#120](https://www.github.com/yargs/y18n/issues/120)) ([b22c0df](https://www.github.com/yargs/y18n/commit/b22c0df59d0851d7be9fd1d51f6a5ee974c9fc94))
+
 ### [5.0.4](https://www.github.com/yargs/y18n/compare/v5.0.3...v5.0.4) (2020-10-16)
 
 
