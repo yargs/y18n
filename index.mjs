@@ -5,4 +5,5 @@ const y18n = (opts) => {
   return _y18n(opts, shim)
 }
 
+export { Y18N } from './build/lib/index.js'
 export default y18n
