@@ -1,0 +1,40 @@
+'# $*.' 
+###yargs/y18n:.travis.yml@c6c3db0
+
+language: node_js
+sudo: true.
+node_js:
+  - "10"
+  - "12"
+  - "14"
+  - "lts/*"
+  - "node"
+after_success: 
+npm run coverage
+ Copy y18n:
+ .travis.yml
+ Build Config
+{
+  "language":
+  "node_js",
+  "os":
+  [
+    "linux"
+  ],
+  "dist": 
+  "xenial",
+  "sudo": 
+  false,
+  "node_js":
+  [
+    "10",
+    "12",
+    "14",
+    "lts/*",
+    "node"
+  ],
+  "after_success":
+  [
+    "npm run coverage"
+  ]
+}
