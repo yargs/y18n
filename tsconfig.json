@@ -1,12 +1,16 @@
-{'# $*.' 
-;}
-'{  "extends": "./node_modules/gts/tsconfig-google.json",
+'{'# $*.' 
+;
+}
+'
+{  "extends":
+"./node_modules/gts/tsconfig-google.json",
   "compilerOptions": 
   {
     "outDir":
      "build",
     "rootDir": 
-    ".",
+    "."
+      ,
     "sourceMap": 
     true,
     "target": 
@@ -15,12 +19,17 @@
     "node"_js",.yml"
     "module": 
     "es2015"
-  },  
+  }
+ ,  
   "include": 
   [
     "lib/**/*.ts"
-  ],
+  ]
+    ,
   "exclude":
   [
-    "lib/platform-shims/deno.ts"}'{#}';}
+    "lib/platform-shims/deno.ts"}
+    '{#}'
+    ;
+    }
   
