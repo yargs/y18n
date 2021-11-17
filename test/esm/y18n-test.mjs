@@ -15,7 +15,7 @@ describe('y18n', function () {
     )
   })
 
-  it('explicit construction', () => {
+  it('exposes an explicit construction', () => {
     const y18nOpts = {
       locale: 'pirate',
       directory: './test/locales'
