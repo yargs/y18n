@@ -1,7 +1,7 @@
 /* global Deno */
 
-import { posix } from 'https://deno.land/std/path/mod.ts'
-import { sprintf } from 'https://deno.land/std/fmt/printf.ts'
+import { posix } from 'https://deno.land/std@0.159.0/path/mod.ts'
+import { sprintf } from 'https://deno.land/std@0.159.0/fmt/printf.ts'
 
 export default {
   fs: {
