@@ -194,7 +194,7 @@ export class Y18N {
         err.message = 'syntax error in ' + languageFile
       }
 
-      if (err.code === 'ENOENT') localeLookup = {}
+      if ((err as { code?: string }).code === 'ENOENT') localeLookup = {}
       else throw err
     }
 
