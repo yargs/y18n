@@ -30,7 +30,7 @@ export interface PlatformShim {
 }
 
 let shim: PlatformShim
-class Y18N {
+export class Y18N {
   directory: string;
   updateFiles: boolean;
   locale: string;
@@ -189,7 +189,7 @@ class Y18N {
       if (shim.fs.readFileSync) {
         localeLookup = JSON.parse(shim.fs.readFileSync(languageFile, 'utf-8'))
       }
-    } catch (err) {
+    } catch (err: any) {
       if (err instanceof SyntaxError) {
         err.message = 'syntax error in ' + languageFile
       }
