@@ -12,7 +12,7 @@
     ]
   },
   "type": "module",
-  "module": "./build/lib/index.js",
+  "module": "./index.mjs",
   "keywords": [
     "i18n",
     "internationalization",
