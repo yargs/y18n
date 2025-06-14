@@ -6,3 +6,5 @@ const y18n = (opts) => {
 }
 
 export default y18n
+
+export { y18n as 'module.exports' };

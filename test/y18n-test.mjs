@@ -1,12 +1,15 @@
 /* global describe, it, after, beforeEach */
 
-const expect = require('chai').expect
-const fs = require('fs')
-const rimraf = require('rimraf')
-const y18n = require('../build/index.cjs')
-const path = require('path')
+import { expect, should } from 'chai'
+import fs from 'node:fs'
+import y18n from '../index.mjs'
+import * as path from 'node:path'
 
-require('chai').should()
+import { fileURLToPath } from 'node:url'
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
+
+should()
 
 describe('y18n', function () {
   describe('configure', function () {
@@ -101,10 +104,13 @@ describe('y18n', function () {
     })
 
     describe('the first time observing a word', function () {
-      beforeEach(function (done) {
-        rimraf('./test/locales/fr*.json', function () {
-          return done()
-        })
+      beforeEach(function () {
+        fs.rmSync('./test/locales/fr.json', { force: true })
+        fs.rmSync('./test/locales/fr_FR.json', { force: true })
+      })
+      after(function () {
+        fs.rmSync('./test/locales/fr.json', { force: true })
+        fs.rmSync('./test/locales/fr_FR.json', { force: true })
       })
 
       it('returns the word immediately', function () {
@@ -131,6 +137,7 @@ describe('y18n', function () {
 
       it('writes new word to language file if language_territory file does not exist', function (done) {
         fs.writeFileSync('./test/locales/fr.json', '{"meow": "le meow"}', 'utf-8')
+        console.error(`cwd is ${process.cwd()}`)
 
         const __ = y18n({
           locale: 'fr_FR',
@@ -253,10 +260,11 @@ describe('y18n', function () {
     })
 
     describe('the first time observing a pluralization', function () {
-      beforeEach(function (done) {
-        rimraf('./test/locales/fr.json', function () {
-          return done()
-        })
+      beforeEach(function () {
+        fs.rmSync('./test/locales/fr.json', { force: true })
+      })
+      after(function () {
+        fs.rmSync('./test/locales/fr.json', { force: true })
       })
 
       it('returns the pluralization immediately', function () {
@@ -310,10 +318,11 @@ describe('y18n', function () {
   })
 
   describe('updateLocale', function () {
-    beforeEach(function (done) {
-      rimraf('./test/locales/fr.json', function () {
-        return done()
-      })
+    beforeEach(function () {
+      fs.rmSync('./test/locales/fr.json', { force: true })
+    })
+    after(function () {
+      fs.rmSync('./test/locales/fr.json', { force: true })
     })
 
     it('updates the locale with the new lookups provided', function () {
@@ -370,6 +379,6 @@ describe('y18n', function () {
   })
 
   after(function () {
-    rimraf.sync('./test/locales/fr.json')
+    fs.rmSync('./test/locales/fr.json', { force: true })
   })
 })
