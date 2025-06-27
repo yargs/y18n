@@ -147,7 +147,6 @@ describe('y18n', () => {
           '{"meow": "le meow"}',
           'utf-8'
         );
-        console.error(`cwd is ${process.cwd()}`);
 
         const __ = y18n({
           locale: 'fr_FR',
