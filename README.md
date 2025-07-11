@@ -12,8 +12,8 @@ Inspired by [i18n](https://www.npmjs.com/package/i18n).
 _simple string translation:_
 
 ```mjs
-import y18 from 'y18n';
-const __ = y18().__;
+import y18n from 'y18n';
+const __ = y18n().__;
 
 console.log(__('my awesome string %s', 'foo'));
 ```
@@ -25,8 +25,8 @@ output:
 _using tagged template literals_
 
 ```js
-import y18 from 'y18n';
-const __ = y18().__;
+import y18n from 'y18n';
+const __ = y18n().__;
 
 const str = 'foo';
 
@@ -40,8 +40,8 @@ output:
 _pluralization support:_
 
 ```js
-import y18 from 'y18n';
-const __n = y18().__n;
+import y18n from 'y18n';
+const __n = y18n().__n;
 
 console.log(__n('one fish %s', '%d fishes %s', 2, 'foo'));
 ```
@@ -75,11 +75,9 @@ File names correspond to locales, e.g., `en.json`, `pirate.json`.
 When strings are observed for the first time they will be
 added to the JSON file corresponding to the current locale.
 
-## Methods
+## Factory Function
 
-### y18(config)
-
-Create an instance of y18n with the config provided, options include:
+The default export from y18n is a factory function. Use the function to create an instance of y18n. You may optionally supply configure options:
 
 - `directory`: the locale directory, default `./locales`.
 - `updateFiles`: should newly observed strings be updated in file, default `true`.
@@ -88,7 +86,11 @@ Create an instance of y18n with the config provided, options include:
   be allowed if a file matching the locale does not exist (e.g. `en_US.json`),
   default `true`.
 
-### y18n.\_\_(str, arg, arg, arg)
+## Methods
+
+A y18n instance has the following methods.
+
+### \_\_(str, arg, arg, arg)
 
 Print a localized string, `%s` will be replaced with `arg`s.
 
@@ -96,20 +98,20 @@ This function can also be used as a tag for a template literal. You can use it
 like this: <code>**&#96;hello ${'world'}&#96;</code>. This will be equivalent to
 `**('hello %s', 'world')`.
 
-### y18n.\_\_n(singularString, pluralString, count, arg, arg, arg)
+### \_\_n(singularString, pluralString, count, arg, arg, arg)
 
 Print a localized string with appropriate pluralization. If `%d` is provided
 in the string, the `count` will replace this placeholder.
 
-### y18n.setLocale(str)
+### setLocale(str)
 
 Set the current locale being used.
 
-### y18n.getLocale()
+### getLocale()
 
 What locale is currently being used?
 
-### y18n.updateLocale(obj)
+### updateLocale(obj)
 
 Update the current locale with the key value pairs in `obj`.
 
