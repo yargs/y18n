@@ -10,7 +10,7 @@ export default {
         return Deno.readTextFileSync(path);
       } catch (err) {
         // Fake the same error as Node.js, so that it does not bubble.
-        err.code = 'ENOENT';
+        (err as {code?: string}).code = 'ENOENT';
         throw err;
       }
     },
