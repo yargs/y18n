@@ -64,7 +64,6 @@ class Y18N {
     let cb: Function = function () {}; // start with noop.
     if (typeof args[args.length - 1] === 'function')
       cb = args.pop() as Function;
-    cb = cb || function () {}; // noop.
 
     if (!this.cache[this.locale]) this._readLocaleFile();
 
