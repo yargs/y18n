@@ -1,7 +1,6 @@
 # y18n
 
 [![NPM version][npm-image]][npm-url]
-[![js-standard-style][standard-image]][standard-url]
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
 
 The bare-bones internationalization library used by yargs.
@@ -12,8 +11,9 @@ Inspired by [i18n](https://www.npmjs.com/package/i18n).
 
 _simple string translation:_
 
-```js
-const __ = require('y18n')().__;
+```mjs
+import y18 from 'y18n';
+const __ = y18().__;
 
 console.log(__('my awesome string %s', 'foo'));
 ```
@@ -25,7 +25,8 @@ output:
 _using tagged template literals_
 
 ```js
-const __ = require('y18n')().__;
+import y18 from 'y18n';
+const __ = y18().__;
 
 const str = 'foo';
 
@@ -39,7 +40,8 @@ output:
 _pluralization support:_
 
 ```js
-const __n = require('y18n')().__n;
+import y18 from 'y18n';
+const __n = y18().__n;
 
 console.log(__n('one fish %s', '%d fishes %s', 2, 'foo'));
 ```
@@ -53,14 +55,14 @@ output:
 As of `v5` `y18n` supports [Deno](https://github.com/denoland/deno):
 
 ```typescript
-import y18n from "https://deno.land/x/y18n/deno.ts";
+import y18n from 'https://deno.land/x/y18n/deno.ts';
 
 const __ = y18n({
   locale: 'pirate',
-  directory: './test/locales'
-}).__
+  directory: './test/locales',
+}).__;
 
-console.info(__`Hi, ${'Ben'} ${'Coe'}!`)
+console.info(__`Hi, ${'Ben'} ${'Coe'}!`);
 ```
 
 You will need to run with `--allow-read` to load alternative locales.
@@ -75,14 +77,14 @@ added to the JSON file corresponding to the current locale.
 
 ## Methods
 
-### require('y18n')(config)
+### y18(config)
 
 Create an instance of y18n with the config provided, options include:
 
-* `directory`: the locale directory, default `./locales`.
-* `updateFiles`: should newly observed strings be updated in file, default `true`.
-* `locale`: what locale should be used.
-* `fallbackToLanguage`: should fallback to a language-only file (e.g. `en.json`)
+- `directory`: the locale directory, default `./locales`.
+- `updateFiles`: should newly observed strings be updated in file, default `true`.
+- `locale`: what locale should be used.
+- `fallbackToLanguage`: should fallback to a language-only file (e.g. `en.json`)
   be allowed if a file matching the locale does not exist (e.g. `en_US.json`),
   default `true`.
 
@@ -91,8 +93,8 @@ Create an instance of y18n with the config provided, options include:
 Print a localized string, `%s` will be replaced with `arg`s.
 
 This function can also be used as a tag for a template literal. You can use it
-like this: <code>__&#96;hello ${'world'}&#96;</code>. This will be equivalent to
-`__('hello %s', 'world')`.
+like this: <code>**&#96;hello ${'world'}&#96;</code>. This will be equivalent to
+`**('hello %s', 'world')`.
 
 ### y18n.\_\_n(singularString, pluralString, count, arg, arg, arg)
 
@@ -123,5 +125,3 @@ ISC
 
 [npm-url]: https://npmjs.org/package/y18n
 [npm-image]: https://img.shields.io/npm/v/y18n.svg
-[standard-image]: https://img.shields.io/badge/code%20style-standard-brightgreen.svg
-[standard-url]: https://github.com/feross/standard
