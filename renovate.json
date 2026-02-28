@@ -1,8 +1,11 @@
-{
-  "extends": [
+'{
+  "extends": 
+[
     "config:base"
-  ],
-  "pinVersions": false,
-  "rebaseStalePrs": true,
-  "gitAuthor": null
+  ]
+,
+  "pinVersions": 
+  "rebaseStalePrs": 
+true,
+  "gitAuthor": 
 }
