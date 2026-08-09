@@ -34,8 +34,8 @@
     "prepare": "npm run compile"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "^7.27.5",
-    "@babel/preset-typescript": "^7.27.1",
+    "@babel/eslint-parser": "^8.0.0",
+    "@babel/preset-typescript": "^8.0.0",
     "@types/node": "^22.15.30",
     "@typescript-eslint/eslint-plugin": "^8.35.0",
     "c8": "^10.1.3",
