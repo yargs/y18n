@@ -1,7 +1,7 @@
 /* global describe, it */
 
-import * as assert from 'assert'
-import y18n from '../../index.mjs'
+const assert = require('assert')
+const y18n = require('../../index.mjs')
 
 describe('y18n', function () {
   it('__ smoke test', function () {

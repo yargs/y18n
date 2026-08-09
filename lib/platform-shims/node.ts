@@ -1,19 +1,19 @@
-import { readFileSync, statSync, writeFile } from 'fs'
-import { format } from 'util'
-import { resolve } from 'path'
+import {readFileSync, statSync, writeFile} from 'fs';
+import {format} from 'util';
+import {resolve} from 'path';
 
 export default {
   fs: {
     readFileSync,
-    writeFile
+    writeFile,
   },
   format,
   resolve,
   exists: (file: string) => {
     try {
-      return statSync(file).isFile()
+      return statSync(file).isFile();
     } catch (err) {
-      return false
+      return false;
     }
-  }
-}
+  },
+};

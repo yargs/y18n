@@ -3,5 +3,4 @@ node_modules
 .nyc_output
 build
 coverage
-package-lock.json
 example.*
