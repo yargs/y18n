@@ -1,7 +1,7 @@
 on:
-   push:
-     branches:
-       - master
+  push:
+    branches:
+      - master
 name: release-please
 jobs:
   release-please:
@@ -16,7 +16,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
-          node-version: 14
+          node-version: 22
       - run: npm install
       - run: npm run compile
       - name: push Deno release
@@ -33,7 +33,7 @@ jobs:
         if: ${{ steps.release.outputs.release_created }}
       - uses: actions/setup-node@v1
         with:
-          node-version: 14
+          node-version: 22
           registry-url: 'https://external-dot-oss-automation.appspot.com/'
         if: ${{ steps.release.outputs.release_created }}
       - run: npm install
