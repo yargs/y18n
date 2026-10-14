@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.0.0](https://github.com/yargs/y18n/compare/v5.0.8...v6.0.0) (2026-09-04)
+
+
+### ⚠ BREAKING CHANGES
+
+* y18n is now ESM first ([#173](https://github.com/yargs/y18n/issues/173))
+
+### Features
+
+* y18n is now ESM first ([#173](https://github.com/yargs/y18n/issues/173)) ([f79cbbf](https://github.com/yargs/y18n/commit/f79cbbf83681c61b0e2234e9bbaa2b272542ad9b))
+
+
+### Bug Fixes
+
+* **build:** use latest release please ([15c509c](https://github.com/yargs/y18n/commit/15c509c6234d6f29421d4684d6b2ae0d9cf06c44))
+* **deno:** `tsc` error and `deno` warnings ([#147](https://github.com/yargs/y18n/issues/147)) ([d023d7f](https://github.com/yargs/y18n/commit/d023d7fc4538204dcb251f961e34e0655c09b01b))
+* **deno:** tsc error and deno warnings ([d43bb8c](https://github.com/yargs/y18n/commit/d43bb8c7f4abdc516dfb532033b66b3360b90c64))
+
 ### [5.0.8](https://www.github.com/yargs/y18n/compare/v5.0.7...v5.0.8) (2021-04-07)
 
 
