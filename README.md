@@ -123,8 +123,8 @@ post on why we think this is important](https://medium.com/the-node-js-collectio
 
 ## Special Thanks
 
-- [HeroDevs](https://www.herodevs.com) sponsored the yargs projects with a donation from
-  its Open Source Sustainability Fund (2026)
+[HeroDevs](https://www.herodevs.com) sponsored the yargs projects with a donation from
+its Open Source Sustainability Fund in 2026.
 
 ## License
 
