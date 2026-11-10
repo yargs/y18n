@@ -127,6 +127,11 @@ Older major versions of `y18n` receive security updates for 12 months. For more 
 
 The main forum for free and community support is the project [Issues](https://github.com/yargs/y18n/issues) on GitHub.
 
+## Special Thanks
+
+[HeroDevs](https://www.herodevs.com) sponsored the yargs projects with a donation from
+its Open Source Sustainability Fund in 2026.
+
 ## License
 
 ISC
